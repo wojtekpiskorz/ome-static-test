@@ -1,0 +1,1 @@
+function _(){return window.__OME_COMPONENT_HYDRATORS__||(window.__OME_COMPONENT_HYDRATORS__=new Map),window.__OME_COMPONENT_HYDRATORS__}function e(o,r){_().set(o,r)}function a(o=document){for(const[r,n]of _())try{n(o)}catch(t){console.error(`[OhMyEtch] Component hydrator "${r}" failed:`,t)}}export{a,e as r};

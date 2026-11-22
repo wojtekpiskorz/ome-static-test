@@ -1,0 +1,1 @@
+const T="data-ome-facet-static",s="data-ome-facet-static-target",c="data-ome-facet-static-kind",n="data-ome-facet-static-style";function i(e){const t=e.closest(`[${T}]`);if(t===null)return!1;const a=t.getAttribute(T);return a==="off"||a==="pending"}export{T as F,s as a,c as b,n as c,i};
