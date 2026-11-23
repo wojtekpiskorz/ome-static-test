@@ -4,7 +4,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name='robots' content='max-image-preview:large' />
-<title>Page not found &#8211; OhMyEtch</title>
+<title>Page not found &#8211; OME Static Compat</title>
 <link     />
 <link     />
 <style id="wp-img-auto-sizes-contain-inline-css">
@@ -12,15 +12,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=wp-img-auto-sizes-contain-inline-css */
 </style>
 
-<link rel='stylesheet' id='woocommerce-blocktheme-css' href="/ome-static-test/wp-content/plugins/woocommerce/assets/css/woocommerce-blocktheme.css?ver=10.8.1" media='all' />
 
-<style id="core-block-supports-inline-css">
-/**
- * Core styles: block-supports
- */
-
-/*# sourceURL=core-block-supports-inline-css */
-</style>
 <style id="ome-visually-hidden-style-inline-css">
 .ome-visually-hidden {
 	position: absolute;
@@ -36,31 +28,60 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
 /*# sourceURL=ome-visually-hidden-style-inline-css */
 </style>
-<link rel='stylesheet' id='woocommerce-layout-css' href="/ome-static-test/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=10.8.1" media='all' />
-<link rel='stylesheet' id='woocommerce-smallscreen-css' href="/ome-static-test/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=10.8.1" media='only screen and (max-width: 768px)' />
-<link rel='stylesheet' id='woocommerce-general-css' href="/ome-static-test/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=10.8.1" media='all' />
-<style id="woocommerce-inline-inline-css">
-.woocommerce form .form-row .required { visibility: visible; }
-/*# sourceURL=woocommerce-inline-inline-css */
-</style>
-<script id="jquery-core-js" src="/ome-static-test/wp-includes/js/jquery/jquery.js?ver=3.7.1"></script>
-<script id="jquery-migrate-js" src="/ome-static-test/wp-includes/js/jquery/jquery-migrate.js?ver=3.4.1"></script>
-<script data-wp-strategy="defer" defer id="wc-jquery-blockui-js" src="/ome-static-test/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.js?ver=2.7.0-wc.10.8.1"></script>
-<script id="wc-add-to-cart-js-extra">
-var wc_add_to_cart_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"/ome-static-test/cart/","is_cart":"","cart_redirect_after_add":"no"};
-//# sourceURL=wc-add-to-cart-js-extra
-</script>
-<script data-wp-strategy="defer" defer id="wc-add-to-cart-js" src="/ome-static-test/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.js?ver=10.8.1"></script>
-<script data-wp-strategy="defer" defer id="wc-js-cookie-js" src="/ome-static-test/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.js?ver=2.1.4-wc.10.8.1"></script>
-<script id="woocommerce-js-extra">
-var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/?wc-ajax=%%endpoint%%","i18n_password_show":"Show password","i18n_password_hide":"Hide password"};
-//# sourceURL=woocommerce-js-extra
-</script>
-<script data-wp-strategy="defer" defer id="woocommerce-js" src="/ome-static-test/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.js?ver=10.8.1"></script>
 <link   /><link     />
 <meta name="generator" content="WordPress 7.1.5" />
-<meta name="generator" content="WooCommerce 10.8.1" />
-			<style id="etch-defaults-css-styles">
+<script>(() => {
+	if (window.parent === window) return;
+	let hostOrigin;
+	let apple;
+	let navigationId;
+	const reportAdminBar = () => {
+		if (!hostOrigin) return;
+		window.parent.postMessage({ type: 'studio:preview:admin-bar-state', visible: (() => {
+	if (document.contentType && document.contentType !== 'text/html') return null;
+	const bar = document.getElementById('wpadminbar');
+	if (!bar) return false;
+	if (bar.checkVisibility) return bar.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true });
+	const style = getComputedStyle(bar);
+	return bar.getClientRects().length > 0 && style.visibility === 'visible' && style.opacity !== '0';
+})(), url: location.href, title: document.title, navigationId }, hostOrigin);
+	};
+	window.addEventListener('pagehide', () => {
+		if (hostOrigin) window.parent.postMessage({ type: 'studio:preview:navigating', navigationId }, hostOrigin);
+	});
+	window.addEventListener('pageshow', reportAdminBar);
+	window.addEventListener('hashchange', reportAdminBar);
+	window.addEventListener('popstate', reportAdminBar);
+	window.addEventListener('message', (event) => {
+		if (event.source !== window.parent) return;
+		if (event.data?.type === 'studio:preview:read-admin-bar') {
+			if (event.origin === hostOrigin) reportAdminBar();
+			return;
+		}
+		if (event.data?.type === 'studio:preview:login') {
+			if (!hostOrigin || event.origin !== hostOrigin || location.pathname.split('/').some((part) => ['wp-admin', 'wp-login.php', 'wp-signup.php', 'wp-activate.php'].includes(part))) return;
+			const login = new URL(window.studioAutoLoginUrl || '/studio-auto-login', location.href);
+			login.searchParams.set('redirect_to', location.href);
+			location.assign(login.toString());
+			return;
+		}
+		if (event.data?.type !== 'studio:preview-shortcuts:init') return;
+		if ((!event.origin.startsWith('http://') && !event.origin.startsWith('https://')) || typeof event.data.apple !== 'boolean') return;
+		hostOrigin = event.origin;
+		apple = event.data.apple;
+		navigationId = event.data.navigationId;
+		reportAdminBar();
+	});
+	document.addEventListener('keydown', (event) => {
+		if (!hostOrigin || location.pathname.split('/').includes('wp-admin')) return;
+		const primary = apple ? event.metaKey && !event.ctrlKey : event.ctrlKey && !event.metaKey;
+		if (!primary || event.altKey || event.shiftKey || event.repeat || event.isComposing || event.getModifierState('AltGraph')) return;
+		if (event.code !== 'KeyK') return;
+		event.preventDefault();
+		event.stopPropagation();
+		window.parent.postMessage({ type: 'studio:preview-shortcuts:command-palette' }, hostOrigin);
+	}, true);
+})();</script>			<style id="etch-defaults-css-styles">
 				@layer etch-defaults {
 	body {
 		line-height: 1.5;
@@ -269,13 +290,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 	}
 }
 			</style>
-				<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
-	<style class="wp-fonts-local">
-@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('/ome-static-test/wp-content/plugins/woocommerce/assets/fonts/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
-@font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('/ome-static-test/wp-content/plugins/woocommerce/assets/fonts/cardo_normal_400.woff2') format('woff2');}
-</style>
-<style id="etch-page-styles">:where([data-ome-dummy-root]) { display: flex; flex-direction: column; gap: 1rem; }
-[data-ome-inline-docs] { display: flex; flex-direction: column; gap: 12px; margin-block-end: 16px }
+			<style id="etch-page-styles">[data-ome-inline-docs] { display: flex; flex-direction: column; gap: 12px; margin-block-end: 16px }
 [data-ome-inline-docs-callout] { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border: 1px solid transparent; border-radius: 10px }
 [data-ome-inline-docs-callout][data-ome-inline-docs-tone="info"] { background: var(--info-ultra-light, #eff6ff); border-color: var(--info-light, #7dd3fc); color: var(--info-dark, #0c4a6e) }
 [data-ome-inline-docs-callout][data-ome-inline-docs-tone="warning"] { background: var(--warning-ultra-light, #fff7ed); border-color: var(--warning-light, #fdba74); color: var(--warning-dark, #9a3412) }
@@ -390,65 +405,14 @@ min-width: var(--ome-map-address-results-anchor-width, 12rem); }
 :where([data-ome-mobile-nav-root])
 	[data-ome-mobile-nav-static-preview]
 	> [data-ome-mobile-nav-panel] { position: static; inset: auto; width: 100%; transform: none; opacity: 1; background: var(--_panel-background, var(--body-bg-color, #fff)) }
-:where([data-ome-breadcrumbs-root]) { box-sizing: border-box; inline-size: 100%; & *, & *::before, & *::after { box-sizing: inherit; } [hidden] { display: none !important; } :where(a, button):focus-visible { outline-color: var(--focus-color, currentColor); outline-offset: var(--focus-offset, 0.2em); outline-style: solid; outline-width: var(--focus-width, 0.15em); } }
-.bento-grid-4__study-metric,
-.bento-grid-4__metric { margin: 0; color: var(--primary); font-size: clamp(3rem, 7vw, 5rem); font-weight: 800; line-height: 1 }
-.cta-section-5__container::after { content: ""; position: absolute; inset: auto 50% 0; transform: translateX(-50%); width: min(72rem, 100%); height: 18rem; background: radial-gradient( ellipse at 50% 100%, color-mix(in srgb, var(--primary) 34%, transparent) 0%, color-mix(in srgb, var(--primary) 16%, transparent) 36%, transparent 72% ); z-index: 0 }
-.cta-section-7::after { content: ""; position: absolute; inset: auto -10% -42% 42%; height: 72%; border: 1px solid color-mix(in srgb, var(--text-light) 12%, transparent); border-radius: 999rem; transform: rotate(-8deg); pointer-events: none }
-.hero-19::before { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 50%; background: color-mix(in srgb, var(--primary-ultra-light) 20%, transparent); clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%); z-index: 0; @media (max-width: 767px) { display: none; } }
-.hero-31__face::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient( 180deg, color-mix(in srgb, var(--bg-ultra-dark) 8%, transparent), color-mix(in srgb, var(--bg-ultra-dark) 78%, transparent) ), linear-gradient( 135deg, color-mix(in srgb, var(--primary) 22%, transparent), transparent 48% ); pointer-events: none }
-.hero-4::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.55); z-index: 1; pointer-events: none }
-.pricing-section-5__detail,
-.pricing-section-5__feature { margin: 0; color: var(--text-dark-muted) }
-[data-ome-e2e-scenario="auto_width_slides"] [data-ome-carousel-slide]:nth-child(1) { width: 40%; }
-[data-ome-e2e-scenario="auto_width_slides"] [data-ome-carousel-slide]:nth-child(2) { width: 30%; }
-[data-ome-e2e-scenario="auto_width_slides"] [data-ome-carousel-slide]:nth-child(3) { width: 50%; }
-[data-ome-dialog-root][data-ome-dialog-id="dialog-placement"] { --ome-dialog-overlay-color: rgba(10, 20, 30, 0.4);--ome-dialog-offset-x: 12px;--ome-dialog-offset-y: 24px; }
-.ome-drawer-default.ome-drawer-e2e-overlay-variant { --ome-drawer-overlay-color: rgba(100, 50, 150, 0.7);--ome-drawer-animation-duration: 120ms; }
-.woocommerce-page .ome-woo-billing-address-form__label { margin-bottom: 0 }
-.woocommerce-page .ome-woo-shipping-address-form__label { margin-bottom: 0 }
-.ome-woo-account-notice--error .ome-woo-account-notice__icon { color: #cc1818 }
-.ome-woo-account-notice--success .ome-woo-account-notice__icon { color: #00a32a }
-[data-ome-woo-checkout-provider][data-ome-woo-hide-form-when-empty="true"] > [hidden] { display: none !important }</style><style type="text/css" id="etch-ome-css-builder-dev-only-ome-css-builder-dev-only">/* from ome css builder */
-</style><style type="text/css" id="etch-custom-media-definitions-custom-media">/* Add your custom media definitions here using @custom-media rules. Example: @custom-media --small-screen (width < 600px);*/</style><style type="text/css" id="etch-ome-woo-cart-item-quantity-runtime-ome-woo-cart-item-quantity-runtime">@keyframes ome-woo-cart-item-quantity-spin {
-	to {
-		--ome-woo-cart-item-quantity-spinner-angle: 1turn;
-	}
-}
+:where([data-ome-breadcrumbs-root]) { box-sizing: border-box; inline-size: 100%; & *, & *::before, & *::after { box-sizing: inherit; } [hidden] { display: none !important; } :where(a, button):focus-visible { outline-color: var(--focus-color, currentColor); outline-offset: var(--focus-offset, 0.2em); outline-style: solid; outline-width: var(--focus-width, 0.15em); } }</style><style type="text/css" id="etch-main-default">/* Add your global styles here */</style><style type="text/css" id="etch-custom-media-definitions-custom-media">/* Add your custom media definitions here using @custom-media rules. Example: @custom-media --small-screen (width < 600px);*/</style></head>
 
-@property --ome-woo-cart-item-quantity-spinner-angle {
-	syntax: "<angle>";
-	inherits: false;
-	initial-value: 0turn;
-}
-</style><style type="text/css" id="etch-ome-woo-cart-item-remove-runtime-ome-woo-cart-item-remove-runtime">@keyframes ome-woo-cart-item-remove-spin {
-	to {
-		transform: rotate(1turn);
-	}
-}
-</style></head>
-
-<body class="error404 wp-embed-responsive wp-theme-etch-theme theme-etch-theme woocommerce-uses-block-theme woocommerce-block-theme-has-button-styles woocommerce-no-js">
+<body class="error404 wp-embed-responsive wp-theme-etch-theme">
 	
 <main id="main">404 not found</main>
 
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/etch-theme/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-	<script>
-		(function () {
-			var c = document.body.className;
-			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
-			document.body.className = c;
-		})();
-	</script>
-	<link rel='stylesheet' id='wc-stripe-blocks-checkout-style-css' href="/ome-static-test/wp-content/plugins/woocommerce-gateway-stripe/build/upe-blocks.css?ver=47fa3695454c5c4f96b5" media='all' />
-<link rel='stylesheet' id='wc-blocks-style-css' href="/ome-static-test/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=1792851728" media='all' />
-<script id="sourcebuster-js-js" src="/ome-static-test/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.js?ver=10.8.1"></script>
-<script id="wc-order-attribution-js-extra">
-var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":false,"ajaxurl":"/ome-static-test/wp-admin/admin-ajax.php","prefix":"wc_order_attribution_","allowTracking":true},"fields":{"source_type":"current.typ","referrer":"current_add.rf","utm_campaign":"current.cmp","utm_source":"current.src","utm_medium":"current.mdm","utm_content":"current.cnt","utm_id":"current.id","utm_term":"current.trm","utm_source_platform":"current.plt","utm_creative_format":"current.fmt","utm_marketing_tactic":"current.tct","session_entry":"current_add.ep","session_start_time":"current_add.fd","session_pages":"session.pgs","session_count":"udata.vst","user_agent":"udata.uag"}};
-//# sourceURL=wc-order-attribution-js-extra
-</script>
-<script id="wc-order-attribution-js" src="/ome-static-test/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.js?ver=10.8.1"></script>
 </body>
 </html>
