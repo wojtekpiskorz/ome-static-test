@@ -326,7 +326,8 @@
     "src": "src/components/map-facet/index.ts",
     "isEntry": true,
     "imports": [
-      "_events-ClY-dvQa.js"
+      "_events-ClY-dvQa.js",
+      "_facet-static-marker-CkPH7rHH.js"
     ],
     "css": [
       "assets/map-facet.css"
